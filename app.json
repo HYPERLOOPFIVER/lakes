@@ -28,27 +28,23 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-
-
     "splash": {
       "image": "./assets/images/splash-icon.png",
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
-
     "plugins": [
       "expo-router"
     ],
-
     "experiments": {
       "typedRoutes": true
     },
-
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "4e343dee-972e-48ff-bf85-738663b99bee"
+        "projectId": "c3f5369a-36df-4ed7-85db-2489c3b4dc94"
       }
-    }
+    },
+    "owner": "mainapp_lakesm"
   }
 }

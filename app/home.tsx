@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 import { router } from 'expo-router';
 import { addDoc, collection, deleteDoc, doc, documentId, getDoc, getDocs, increment, limit, query, setDoc, updateDoc, where, writeBatch } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
+import { httpsCallable } from 'firebase/functions';
 import {
   ActivityIndicator,
   Dimensions,
