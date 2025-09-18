@@ -26,3 +26,6 @@ const app = initializeApp(firebaseConfig);
 // Export Firebase services
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+// Export Firestore document reference helper
+export { doc as firestoreDoc } from "firebase/firestore";
