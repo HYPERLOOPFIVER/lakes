@@ -28,6 +28,41 @@ import { auth, db, firestoreDoc } from '../firebaseConfig';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 const { width, height } = Dimensions.get('window');
 
+// Interface definitions
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+  images?: string[];
+  category: string;
+  rating?: number;
+  reviewCount?: number;
+  shopId?: string;
+  shopName?: string;
+  tags?: string[];
+  specifications?: Record<string, string>;
+  trending?: boolean;
+  discount?: number;
+  originalPrice?: number;
+  availableCities?: string[];
+}
+
+interface CartItem {
+  productId: string;
+  quantity: number;
+  price: number;
+  name: string;
+  image: string;
+  product?: Product;
+}
+
+interface WishlistItem {
+  id: string;
+  productId: string;
+}
+
 // Manual category list
 const categories = [
   { id: 'fruits', name: 'Fruits', icon: '🍎', image: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&q=80&w=1740&ixlib=rb-4.0.3' },
@@ -41,16 +76,16 @@ const categories = [
 
 export default function Home() {
   const navigation = useNavigation();
-  const [trendingProducts, setTrendingProducts] = useState([]);
-  const [allProducts, setAllProducts] = useState([]);
+  const [trendingProducts, setTrendingProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [orderNotes, setOrderNotes] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [timeSlots, setTimeSlots] = useState([]);
+  const [timeSlots, setTimeSlots] = useState<string[]>([]);
   const [selectedSlot, setSelectedSlot] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [searchFocused, setSearchFocused] = useState(false);
-  const [searchHistory, setSearchHistory] = useState([]);
+  const [searchHistory, setSearchHistory] = useState<string[]>([]);
   const [userAddress, setUserAddress] = useState({
     formatted: '',
     street: '',
@@ -61,12 +96,12 @@ export default function Home() {
   const [isEditingAddress, setIsEditingAddress] = useState(false);
   const [useCurrentLocation, setUseCurrentLocation] = useState(true);
   const [userName, setUserName] = useState('');
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [wishlistItems, setWishlistItems] = useState([]);
-  const [recentlyViewed, setRecentlyViewed] = useState([]);
+  const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([]);
+  const [recentlyViewed, setRecentlyViewed] = useState<Product[]>([]);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
-  const [popularSearches, setPopularSearches] = useState([
+  const [popularSearches, setPopularSearches] = useState<string[]>([
     'Milk', 'Bread', 'Eggs', 'Bananas', 'Rice', 'Chicken'
   ]);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('cash'); // Default to cash on delivery
@@ -79,7 +114,7 @@ export default function Home() {
     brand: ''
   });
 
-  const [activeOrders, setActiveOrders] = useState([]);
+  const [activeOrders, setActiveOrders] = useState<any[]>([]);
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
