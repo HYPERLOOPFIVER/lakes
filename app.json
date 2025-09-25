@@ -22,7 +22,7 @@
       "package": "com.metaphor.lakesmart",
       "compileSdkVersion": 35,
       "targetSdkVersion": 35,
-      "minSdkVersion": 23,
+      "minSdkVersion": 24,
       "versionCode": 1,
       "permissions": [
         "ACCESS_FINE_LOCATION",
@@ -48,12 +48,11 @@
         "expo-build-properties",
         {
           "android": {
-            "enableNativePageAlignment": true,
-            "enableProguardInReleaseBuilds": true,
-            "enableShrinkResourcesInReleaseBuilds": true,
             "compileSdkVersion": 35,
             "targetSdkVersion": 35,
-            "minSdkVersion": 23
+            "minSdkVersion": 24,
+            "enableProguardInReleaseBuilds": true,
+            "shrinkResources": true
           }
         }
       ]
@@ -64,9 +63,10 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "c3f5369a-36df-4ed7-85db-2489c3b4dc94"
+        "projectId": "32d516fa-5d93-483d-ba3d-f81bca7b26a3"
       }
     },
-    "owner": "mainapp_lakesm"
+    "owner": ""
   }
 }
+
